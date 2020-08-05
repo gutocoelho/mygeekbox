@@ -11,7 +11,7 @@
 			$name = $_POST['nome'];
 			$email = $_POST['email'];
 			
-			$subject = 'Estou interessa na My Geek Box';
+			$subject = 'Estou interessado na My Geek Box';
 			$myEmail = "contato@mygeekbox.com.br";//é necessário informar um e-mail do próprio domínio
 			$headers = "From: $myEmail\r\n";
 			$headers .= "Reply-To: $email\r\n";
