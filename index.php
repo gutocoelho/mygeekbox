@@ -91,7 +91,7 @@
 
 					<form class="contact100-form validate-form" method="POST" action="mail_send.php">
 						<div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
-							<input id="inputNome" class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Nome">
+							<input id="inputNome" class="s1-txt4 placeholder0 input100" type="text" name="nome" placeholder="Nome">
 							<span class="focus-input100"></span>
 						</div>
 
