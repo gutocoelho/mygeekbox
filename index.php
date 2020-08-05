@@ -58,7 +58,7 @@
 			</div>
 
 			<button type="submit" class="flex-c-m s1-txt2 size3 how-btn"  data-toggle="modal" data-target="#subscribe">
-			Quero ser avisado!
+			Quero ser avisado
 			</button>
 		</div>
 
