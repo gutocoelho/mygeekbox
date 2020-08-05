@@ -23,7 +23,7 @@ $para = "contato@mygeekbox.com.br";
 $de = pegaValor("email");
 $assunto = "Estou interessado na My Geek Box";
 
-if ($nome && validaEmail($de)) {
+if (validaEmail($de)) {
     enviaEmail($de, $assunto, $para, $email_servidor);
     $pagina = "index.php";
 
