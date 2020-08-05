@@ -87,16 +87,7 @@
 					<p class="m1-txt2 txt-center p-b-40">
 						Quero saber da novidade em primeira mão!
 					</p>
-					<?
-						if ($nome && validaEmail($de)) {
-							enviaEmail($de, $assunto, $para, $email_servidor);
-							$pagina = "index.php";
-						} else {
-							$pagina = "mail_error.php";
-						}
-						
-						header("location:$pagina");
-					?>
+					
 					<p>O e-mail foi enviado com sucesso.</p>
 
 					<form class="contact100-form validate-form" method="POST" action="mail_send.php">
