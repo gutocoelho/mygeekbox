@@ -70,44 +70,7 @@
 
 	<!-- Modal Login -->
 
-	<?php
-		if (isset($_POST['action'])) {
-			switch ($_POST['action']) {
-				case 'validate':
-					return sendMail();
-					break;
-			}
-		}
-
-		function sendMail() {
-			$name = $_POST['nome'];
-			$email = $_POST['email'];
-			
-			$subject = 'Assunto do email';
-			$myEmail = "contato@mygeekbox.com.br";//é necessário informar um e-mail do próprio domínio
-			$headers = "From: $myEmail\r\n";
-			$headers .= "Reply-To: $email\r\n";
-			
-			/*abaixo contém os dados que serão enviados para o email
-			cadastrado para receber o formulário*/
-			
-			$corpo = "Formulário enviado\n";
-			$corpo .= "Nome: " . $name . "\n";
-			$corpo .= "Email: " . $email . "\n";
-			
-			$email_to = 'contato@mygeekbox.com.br';
-			//não esqueça de substituir este email pelo seu.
-			
-			$status = mail($email_to, $subject, $corpo, $headers);
-			//enviando o email.
-			
-			if ($status) {
-				return 'Formulário enviado com sucesso!';
-			}
-
-			return 'Falha ao enviar o Formulário.';
-		}
-	?>
+	
 
 	<div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document" data-dismiss="modal">
@@ -126,13 +89,13 @@
 					</p>
 
 					<form class="contact100-form validate-form" method="POST" action="index.php">
-						<div id="inputNome" class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
-							<input class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Nome">
+						<div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
+							<input id="inputNome" class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Nome">
 							<span class="focus-input100"></span>
 						</div>
 
-						<div id="inputEmail" class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
-							<input class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
+						<div class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
+							<input id="inputEmail" class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
 							<span class="focus-input100"></span>
 						</div>
 
@@ -182,8 +145,8 @@
 		});
 
 		$(document).ready(function(){
-			$('#btnCadastrar').click(function(e){
-				var ajaxurl = 'index.php',
+			$('#btnCadastrar').click(function(){
+				var ajaxurl = 'validate.php',
 				data =  {'action': 'validate', 'name': $('#inputNome').val(), 'email': $('#inputEmail').val()};
 				$.post(ajaxurl, data, function (msg) {
 					alert(msg);
