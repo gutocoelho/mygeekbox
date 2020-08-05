@@ -87,8 +87,19 @@
 					<p class="m1-txt2 txt-center p-b-40">
 						Quero saber da novidade em primeira mão!
 					</p>
+					<?
+						if ($nome && validaEmail($de)) {
+							enviaEmail($de, $assunto, $para, $email_servidor);
+							$pagina = "index.php";
+						} else {
+							$pagina = "mail_error.php";
+						}
+						
+						header("location:$pagina");
+					?>
+					<p>O e-mail foi enviado com sucesso.</p>
 
-					<form class="contact100-form validate-form" method="POST" action="index.php">
+					<form class="contact100-form validate-form" method="POST" action="mail_send.php">
 						<div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
 							<input id="inputNome" class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Nome">
 							<span class="focus-input100"></span>
