@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script data-ad-client="ca-pub-7693478571342946" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<title>My Geek Box - Em breve um turbilhão de surpresas para você</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
