@@ -23,7 +23,7 @@
 			$corpo .= "Nome: " . $name . "\n";
 			$corpo .= "Email: " . $email . "\n";
 			
-			$email_to = 'contato@mygeekbox.com.br';
+			$email_to = 'augustoufc@gmail.com';
 			//não esqueça de substituir este email pelo seu.
 			
 			$status = true;//mail($email_to, $subject, $corpo, $headers);
