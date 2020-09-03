@@ -18,12 +18,12 @@ function enviaEmail($de, $assunto, $para, $email_servidor) {
   mail($para, $assunto, $headers);
 }
 
-$email_servidor = "contato@mygeekbox.com.br";
-$para = "contato@mygeekbox.com.br";
+$email_servidor = "augustoufc@gmail.com";
+$para = "augustoufc@gmail.com";
 $de = pegaValor("email");
 $assunto = "Estou interessado na My Geek Box";
 
-if (validaEmail($de)) {
+if ($nome && validaEmail($de)) {
     enviaEmail($de, $assunto, $para, $email_servidor);
     $pagina = "index.php";
 
