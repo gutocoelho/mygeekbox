@@ -71,7 +71,52 @@
 
 	<!-- Modal Login -->
 
-	
+	<?php
+if (isset($_POST['BTEnvia'])) {
+ 
+ //Variaveis de POST, Alterar somente se necessário 
+ //====================================================
+ $nome = $_POST['nome'];
+ $email = $_POST['email'];
+ $telefone = $_POST['telefone']; 
+ $mensagem = $_POST['mensagem'];
+ //====================================================
+ 
+ //REMETENTE --> ESTE EMAIL TEM QUE SER VALIDO DO DOMINIO
+ //==================================================== 
+ $email_remetente = "contato@mygeekbox.com.br"; // deve ser uma conta de email do seu dominio 
+ //====================================================
+ 
+ //Configurações do email, ajustar conforme necessidade
+ //==================================================== 
+ $email_destinatario = "contato@mygeekbox.com.br"; // pode ser qualquer email que receberá as mensagens
+ $email_reply = "$email"; 
+ $email_assunto = "Contato mygeekbox.com.br"; // Este será o assunto da mensagem
+ //====================================================
+ 
+ //Monta o Corpo da Mensagem
+ //====================================================
+ $email_conteudo = "Nome = $nome \n"; 
+ $email_conteudo .= "Email = $email \n";
+ $email_conteudo .= "Telefone = $telefone \n"; 
+ $email_conteudo .= "Mensagem = $mensagem \n"; 
+ //====================================================
+ 
+ //Seta os Headers (Alterar somente caso necessario) 
+ //==================================================== 
+ $email_headers = implode ( "\n",array ( "From: $email_remetente", "Reply-To: $email_reply", "Return-Path: $email_remetente","MIME-Version: 1.0","X-Priority: 3","Content-Type: text/html; charset=UTF-8" ) );
+ //====================================================
+ 
+ //Enviando o email 
+ //==================================================== 
+ if (mail ($email_destinatario, $email_assunto, nl2br($email_conteudo), $email_headers)){ 
+ echo "</b>E-Mail enviado com sucesso!</b>"; 
+ } 
+ else{ 
+ echo "</b>Falha no envio do E-Mail!</b>"; } 
+ //====================================================
+} 
+?>
 
 	<div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document" data-dismiss="modal">
@@ -90,19 +135,19 @@
 					</p>
 								
 
-					<form class="contact100-form validate-form" method="POST" action="mail_send.php">
+					<form class="contact100-form validate-form" method="POST" action="<? $PHP_SELF; ?>">
 						<div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
-							<input id="inputNome" class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Nome">
+							<input id="nome" class="s1-txt4 placeholder0 input100" type="text" name="nome" placeholder="Nome">
 							<span class="focus-input100"></span>
 						</div>
 
 						<div class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
-							<input id="inputEmail" class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
+							<input id="email" class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
 							<span class="focus-input100"></span>
 						</div>
 
 						<div class="w-full">
-							<button type="submit" id="btnCadastrar" class="flex-c-m s1-txt2 size5 how-btn1 trans-04">
+							<button type="submit"  name="BTEnvia"  class="flex-c-m s1-txt2 size5 how-btn1 trans-04">
 								Enviar
 							</button>
 						</div>
@@ -146,15 +191,7 @@
 			// go to " http://momentjs.com/timezone/ " to get timezone
 		});
 
-		$(document).ready(function(){
-			$('#btnCadastrar').click(function(){
-				var ajaxurl = 'validate.php',
-				data =  {'action': 'validate', 'name': $('#inputNome').val(), 'email': $('#inputEmail').val()};
-				$.post(ajaxurl, data, function (msg) {
-					alert(msg);
-				});
-			});
-		});
+		
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
